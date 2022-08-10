@@ -1,8 +1,13 @@
 h1 {
-  color: brown;
+  color: #fbfeff;
 }
 
-.weather-window {
-  max-width: 600px;
-  margin: 0 auto;
+.weather-app {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #0566b2;
+  border-radius: 7px;
+  background-color: #0566b2;
+  color: #fbfeff;
 }
