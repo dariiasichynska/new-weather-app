@@ -1,9 +1,10 @@
-h1 {
+body {
   color: #fbfeff;
+  font-family: "Nunito", sans-serif;
 }
 
 .weather-app {
-  max-width: 800px;
+  max-width: 600px;
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #0566b2;

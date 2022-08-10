@@ -1,4 +1,4 @@
-alert("Hello world");
+// alert("Hello world");
 let now = new Date();
 let dateTime = document.querySelector("#dateTime");
 let date = now.getDate();
