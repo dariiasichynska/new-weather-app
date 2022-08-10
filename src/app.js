@@ -33,7 +33,7 @@ let months = [
   "December",
 ];
 let month = months[now.getMonth()];
-dateTime.innerHTML = `${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes}`;
+dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
 
 switch (true) {
   case 10 <= hour && hour < 18:

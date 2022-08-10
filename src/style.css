@@ -2,7 +2,6 @@ body {
   color: #fbfeff;
   font-family: "Nunito", sans-serif;
 }
-
 .weather-app {
   max-width: 600px;
   margin: 30px auto;
@@ -11,4 +10,20 @@ body {
   border-radius: 7px;
   background-color: #0566b2;
   color: #fbfeff;
+}
+.dateTime {
+  border: 1px solid #d22837;
+  border-radius: 10px;
+  background-color: #d22837;
+  color: #fbfeff;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px;
+  margin: 0 auto;
+  display: block;
+}
+
+.footer {
+  margin: 12px auto;
 }
