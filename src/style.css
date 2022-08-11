@@ -15,6 +15,14 @@ body {
   background-color: #0566b2;
   color: #fbfeff;
 }
+
+.wind-speed img {
+  float: left;
+}
+.wind-speed div {
+  overflow: hidden;
+}
+
 .dateTime {
   border: 1px solid #d22837;
   border-radius: 10px;
