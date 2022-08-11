@@ -15,6 +15,16 @@ body {
   background-color: #0566b2;
   color: #fbfeff;
 }
+ul {
+  padding: 5px;
+}
+li {
+  list-style: none;
+}
+.sky-condition {
+  font-size: 22px;
+  font-weight: 700;
+}
 .wet-weather img {
   float: left;
   width: 40px;
@@ -53,8 +63,4 @@ body {
 .footer {
   margin: 12px auto;
   font-size: 10px;
-}
-
-li {
-  list-style: none;
 }
