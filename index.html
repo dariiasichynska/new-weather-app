@@ -92,11 +92,20 @@
             <div class="col-4">
               <ul>
                 <li class="sky">Clear</li>
-                <li class="humidity">20</li>
+                <li class="humidity">
+                  <div class="clearfix wet-weather">
+                    <img
+                      src="wi_humidity.png"
+                      alt="Humidity"
+                      class="float-left"
+                    />
+                    <var id="humidity">20</var>
+                  </div>
+                </li>
                 <li class="wind-power">
                   <div class="clearfix wind-speed">
                     <img src="wi_wind.png" alt="Speed" class="float-left" />
-                    <div class="float-left"><strong>25</strong> km/h</div>
+                    <div class="float-left"><var>25</var> km/h</div>
                   </div>
                 </li>
                 <li class="wind-direction">North-West</li>
