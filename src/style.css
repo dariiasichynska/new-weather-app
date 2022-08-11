@@ -18,9 +18,13 @@ body {
 
 .wind-speed img {
   float: left;
+  width: 30px;
 }
 .wind-speed div {
-  overflow: hidden;
+  line-height: 22.5px;
+  margin: 2%;
+  float: left;
+  position: relative;
 }
 
 .dateTime {
