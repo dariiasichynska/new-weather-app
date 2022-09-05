@@ -54,3 +54,14 @@ switch (true) {
     break;
 }
 console.log(hour);
+
+function displayTemperature(response) {
+  console.log(response.data);
+}
+
+let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
+let cityName = "Kyiv";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+console.log(apiUrl);
+
+axios.get(apiUrl).then(displayTemperature);
