@@ -24,6 +24,13 @@ body {
   font-size: 35px;
   font-weight: 700;
 }
+.fahrenheit-units {
+  color: #fbfeff;
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  font-style: normal;
+}
 
 ul {
   padding: 5px;
