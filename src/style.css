@@ -37,6 +37,7 @@ ul {
 }
 li {
   list-style: none;
+  text-transform: capitalize;
 }
 .sky-condition {
   font-size: 22px;
