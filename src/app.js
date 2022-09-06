@@ -37,9 +37,10 @@
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hour = date.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
+  let dayOfMonth = date.getDay();
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
   if (minutes < 10) {
@@ -55,28 +56,45 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = weekDay[date.getDay()];
-  return `${day}, ${hour}:${minutes}`;
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[date.getMonth()];
+  return `${day}, ${month} ${dayOfMonth}, ${hours}:${minutes}`;
 }
 // Changing backgroundImage depending from time oh the day
-// switch (true) {
-//   case 10 <= hour && hour < 18:
-//     document.getElementById("weather-app").style.backgroundImage =
-//       "url(day.jpg)";
-//     break;
-//   case 5 <= hour && hour < 10:
-//     document.getElementById("weather-app").style.backgroundImage =
-//       "url(sunrise.jpg)";
-//     break;
-//   case 18 <= hour && hour < 22:
-//     document.getElementById("weather-app").style.backgroundImage =
-//       "url(sunset.jpg)";
-//     break;
-//   case (0 <= hour && hour < 5) || 22 <= hour:
-//     document.getElementById("weather-app").style.backgroundImage =
-//       "url(night.jpg)";
-//     break;
-// }
-// console.log(hour);
+let now = new Date();
+let hour = now.getHours();
+switch (true) {
+  case 10 <= hour && hour < 18:
+    document.getElementById("weather-app").style.backgroundImage =
+      "url(day.jpg)";
+    break;
+  case 5 <= hour && hour < 10:
+    document.getElementById("weather-app").style.backgroundImage =
+      "url(sunrise.jpg)";
+    break;
+  case 18 <= hour && hour < 22:
+    document.getElementById("weather-app").style.backgroundImage =
+      "url(sunset.jpg)";
+    break;
+  case (0 <= hour && hour < 5) || 22 <= hour:
+    document.getElementById("weather-app").style.backgroundImage =
+      "url(night.jpg)";
+    break;
+}
+console.log(hour);
 
 function displayApiResults(response) {
   console.log(response.data.main.temp);
