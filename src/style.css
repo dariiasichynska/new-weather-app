@@ -38,7 +38,7 @@ ul {
 li {
   list-style: none;
 }
-li::first-letter {
+li:first-letter {
   text-transform: capitalize;
 }
 .sky-condition {

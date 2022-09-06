@@ -37,33 +37,46 @@
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours();
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
   let minutes = date.getMinutes();
-  let day = date.getDay();
-  // let dayOfTheWeek =
-  return `${day} ${hours}: ${minutes}`;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let weekDay = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = weekDay[date.getDay()];
+  return `${day}, ${hour}:${minutes}`;
 }
-
 // Changing backgroundImage depending from time oh the day
-switch (true) {
-  case 10 <= hour && hour < 18:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(day.jpg)";
-    break;
-  case 5 <= hour && hour < 10:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(sunrise.jpg)";
-    break;
-  case 18 <= hour && hour < 22:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(sunset.jpg)";
-    break;
-  case (0 <= hour && hour < 5) || 22 <= hour:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(night.jpg)";
-    break;
-}
-console.log(hour);
+// switch (true) {
+//   case 10 <= hour && hour < 18:
+//     document.getElementById("weather-app").style.backgroundImage =
+//       "url(day.jpg)";
+//     break;
+//   case 5 <= hour && hour < 10:
+//     document.getElementById("weather-app").style.backgroundImage =
+//       "url(sunrise.jpg)";
+//     break;
+//   case 18 <= hour && hour < 22:
+//     document.getElementById("weather-app").style.backgroundImage =
+//       "url(sunset.jpg)";
+//     break;
+//   case (0 <= hour && hour < 5) || 22 <= hour:
+//     document.getElementById("weather-app").style.backgroundImage =
+//       "url(night.jpg)";
+//     break;
+// }
+// console.log(hour);
 
 function displayApiResults(response) {
   console.log(response.data.main.temp);
