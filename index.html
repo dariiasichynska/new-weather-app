@@ -26,7 +26,7 @@
     <div class="container">
       <div class="wrapper">
         <div class="weather-app" id="weather-app">
-          <h1>Kyiv</h1>
+          <h1 id="city"></h1>
 
           <div class="row">
             <div class="col-4">
@@ -36,7 +36,7 @@
                   alt="Termometr"
                   class="termometr"
                 />
-                <var class="degree">15</var>
+                <var class="degree" id="temperature"></var>
               </div>
               <span class="units"
                 >°C |<a href="#" class="fahrenheit-units">°F</a>
@@ -105,7 +105,7 @@
             <div class="col-4">
               <ul>
                 <li class="sky">
-                  <div class="d-flex sky-condition">Clear</div>
+                  <div class="d-flex sky-condition" id="condition"></div>
                 </li>
                 <li class="humidity">
                   <div class="d-flex wet-weather">

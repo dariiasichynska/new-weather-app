@@ -56,12 +56,18 @@ switch (true) {
 console.log(hour);
 
 function displayTemperature(response) {
-  console.log(response.data);
+  console.log(response.data.main.temp);
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let conditionElement = document.querySelector("#condition");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  cityElement.innerHTML = response.data.name;
+  conditionElement.innerHTML = response.data.weather[0].main;
 }
 
 let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
-let cityName = "Kyiv";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+// let cityName = "Kyiv";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=${apiKey}&units=metric`;
 console.log(apiUrl);
 
 axios.get(apiUrl).then(displayTemperature);
