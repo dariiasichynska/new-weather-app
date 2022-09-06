@@ -1,40 +1,50 @@
 // alert("Hello world");
-let now = new Date();
-let dateTime = document.querySelector("#dateTime");
-let date = now.getDate();
-let hour = now.getHours();
-hour = hour > 9 ? hour : "0" + hour;
-let minutes = now.getMinutes();
-minutes = minutes > 9 ? minutes : "0" + minutes;
+// let now = new Date();
+// let dateTime = document.querySelector("#dateTime");
+// let date = now.getDate();
+// let hour = now.getHours();
+// hour = hour > 9 ? hour : "0" + hour;
+// let minutes = now.getMinutes();
+// minutes = minutes > 9 ? minutes : "0" + minutes;
 
-let weekDay = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let dayOfTheWeek = weekDay[now.getDay()];
+// let weekDay = [
+//   "Sunday",
+//   "Monday",
+//   "Tuesday",
+//   "Wednesday",
+//   "Thursday",
+//   "Friday",
+//   "Saturday",
+// ];
+// let dayOfTheWeek = weekDay[now.getDay()];
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
+// let months = [
+//   "January",
+//   "February",
+//   "March",
+//   "April",
+//   "May",
+//   "June",
+//   "July",
+//   "August",
+//   "September",
+//   "October",
+//   "November",
+//   "December",
+// ];
+// let month = months[now.getMonth()];
+// dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
 
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let day = date.getDay();
+  // let dayOfTheWeek =
+  return `${day} ${hours}: ${minutes}`;
+}
+
+// Changing backgroundImage depending from time oh the day
 switch (true) {
   case 10 <= hour && hour < 18:
     document.getElementById("weather-app").style.backgroundImage =
@@ -55,7 +65,7 @@ switch (true) {
 }
 console.log(hour);
 
-function displayTemperature(response) {
+function displayApiResults(response) {
   console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -67,6 +77,8 @@ function displayTemperature(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind-power");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  let dateElement = document.querySelector("#dateTime");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
@@ -74,4 +86,4 @@ let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=${apiKey}&units=metric`;
 console.log(apiUrl);
 
-axios.get(apiUrl).then(displayTemperature);
+axios.get(apiUrl).then(displayApiResults);
