@@ -1,81 +1,81 @@
 // alert("Hello world");
-// let now = new Date();
-// let dateTime = document.querySelector("#dateTime");
-// let date = now.getDate();
-// let hour = now.getHours();
-// hour = hour > 9 ? hour : "0" + hour;
-// let minutes = now.getMinutes();
-// minutes = minutes > 9 ? minutes : "0" + minutes;
-
-// let weekDay = [
-//   "Sunday",
-//   "Monday",
-//   "Tuesday",
-//   "Wednesday",
-//   "Thursday",
-//   "Friday",
-//   "Saturday",
-// ];
-// let dayOfTheWeek = weekDay[now.getDay()];
-
-// let months = [
-//   "January",
-//   "February",
-//   "March",
-//   "April",
-//   "May",
-//   "June",
-//   "July",
-//   "August",
-//   "September",
-//   "October",
-//   "November",
-//   "December",
-// ];
-// let month = months[now.getMonth()];
-// dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
-
-function formatDate(timestamp) {
-  let date = new Date(timestamp);
-  let dayOfMonth = date.getDay();
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  let weekDay = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = weekDay[date.getDay()];
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  let month = months[date.getMonth()];
-  return `${day}, ${month} ${dayOfMonth}, ${hours}:${minutes}`;
-}
-// Changing backgroundImage depending from time oh the day
 let now = new Date();
+let dateTime = document.querySelector("#dateTime");
+let date = now.getDate();
 let hour = now.getHours();
+hour = hour > 9 ? hour : "0" + hour;
+let minutes = now.getMinutes();
+minutes = minutes > 9 ? minutes : "0" + minutes;
+
+let weekDay = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let dayOfTheWeek = weekDay[now.getDay()];
+
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+let month = months[now.getMonth()];
+dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
+
+// function formatDate(timestamp) {
+//   let date = new Date(timestamp);
+//   let dayOfMonth = date.getDay();
+//   let hours = date.getHours();
+//   if (hours < 10) {
+//     hours = `0${hours}`;
+//   }
+//   let minutes = date.getMinutes();
+//   if (minutes < 10) {
+//     minutes = `0${minutes}`;
+//   }
+//   let weekDay = [
+//     "Sunday",
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday",
+//   ];
+//   let day = weekDay[date.getDay()];
+//   let months = [
+//     "January",
+//     "February",
+//     "March",
+//     "April",
+//     "May",
+//     "June",
+//     "July",
+//     "August",
+//     "September",
+//     "October",
+//     "November",
+//     "December",
+//   ];
+//   let month = months[date.getMonth()];
+//   return `${day}, ${month} ${dayOfMonth}, ${hours}:${minutes}`;
+// }
+// Changing backgroundImage depending from time oh the day
+// let now = new Date();
+// let hour = now.getHours();
 switch (true) {
   case 10 <= hour && hour < 18:
     document.getElementById("weather-app").style.backgroundImage =
@@ -108,13 +108,16 @@ function displayApiResults(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind-power");
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  let dateElement = document.querySelector("#dateTime");
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  // let dateElement = document.querySelector("#dateTime");
+  // dateElement.innerHTML = formatDate(response.data.dt * 1000); - мне не нравится этот способ потому что
+  // время обновляется некорректно, постояннор с
+  // задержкой 10 минут. Наверное это из-за частоты обновления dt в API
+  // let iconElement = document.querySelector("#icon");
 }
 
 let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
-// let cityName = "Kyiv";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&appid=${apiKey}&units=metric`;
+let cityName = "Kyiv";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 console.log(apiUrl);
 
 axios.get(apiUrl).then(displayApiResults);
