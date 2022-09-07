@@ -96,6 +96,45 @@ switch (true) {
 }
 console.log(hour);
 
+function formatWind(direction) {
+  switch (true) {
+    case 0 < direction < 11:
+      return `north`;
+    case 349 < direction < 360:
+      return `north`;
+    case 12 < direction < 34:
+      return `north-northeast`;
+    case 34 < direction < 56:
+      return `northeast`;
+    case 57 < direction < 79:
+      return `east-northeast`;
+    case 80 < direction < 101:
+      return `east`;
+    case 102 < direction < 123:
+      return `east-southeast`;
+    case 124 < direction < 146:
+      return `southeast`;
+    case 147 < direction < 168:
+      return `south-southeast`;
+    case 169 < direction < 191:
+      return `south`;
+    case 192 < direction < 213:
+      return `south-southwest`;
+    case 214 < direction < 236:
+      return `southwest`;
+    case 237 < direction < 258:
+      return `west-southwest`;
+    case 259 < direction < 281:
+      return `west`;
+    case 282 < direction < 303:
+      return `west-northwest`;
+    case 304 < direction < 326:
+      return `northwest`;
+    case 327 < direction < 348:
+      return `north-northwest`;
+  }
+}
+
 function displayApiResults(response) {
   console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
@@ -109,11 +148,12 @@ function displayApiResults(response) {
   let windElement = document.querySelector("#wind-power");
   windElement.innerHTML = Math.round(response.data.wind.speed);
   let windDirectionElement = document.querySelector("#wind-direction");
-  windDirectionElement.innerHTML = response.data.wind.deg;
+  windDirectionElement.innerHTML = formatWind(response.data.wind.deg);
+
   // let dateElement = document.querySelector("#dateTime");
   // dateElement.innerHTML = formatDate(response.data.dt * 1000); - мне не нравится этот способ потому что
   // время обновляется некорректно, постояннор с
-  // задержкой 10 минут. Наверное это из-за частоты обновления dt в API
+  // задержкой 10 минут и 4 дня. Наверное это из-за частоты обновления dt в API
   // let iconElement = document.querySelector("#icon");
 }
 
