@@ -108,6 +108,8 @@ function displayApiResults(response) {
   humidityElement.innerHTML = response.data.main.humidity;
   let windElement = document.querySelector("#wind-power");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+  let windDirectionElement = document.querySelector("#wind-direction");
+  windDirectionElement.innerHTML = response.data.wind.deg;
   // let dateElement = document.querySelector("#dateTime");
   // dateElement.innerHTML = formatDate(response.data.dt * 1000); - мне не нравится этот способ потому что
   // время обновляется некорректно, постояннор с
