@@ -199,7 +199,8 @@ function displayApiResults(response) {
   let conditionElement = document.querySelector("#condition");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   cityElement.innerHTML = response.data.name;
-  conditionElement.innerHTML = response.data.weather[0].main;
+  conditionElement.innerHTML = response.data.weather[0].description;
+
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = response.data.main.humidity;
 
@@ -210,10 +211,11 @@ function displayApiResults(response) {
     let windDirectionElement = document.querySelector("#wind-direction");
     windDirectionElement.innerHTML = formatWind(response.data.wind.deg);
   }
+  // не отображает направление ветра, если скорость ветра = 0.
 
-  let iconType = response.data.weather[0].icon;
+  let iconID = response.data.weather[0].icon;
   let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute("src", `openweathermap/${iconType}.svg`);
+  iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
 
   // let dateElement = document.querySelector("#dateTime");
   // dateElement.innerHTML = formatDate(response.data.dt * 1000); - мне не нравится этот способ потому что
@@ -222,7 +224,7 @@ function displayApiResults(response) {
 }
 
 let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
-let cityName = "Sydney";
+let cityName = "Kyiv";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 console.log(apiUrl);
 

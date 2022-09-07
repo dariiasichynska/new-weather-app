@@ -24,7 +24,7 @@ body {
   font-size: 35px;
   font-weight: 700;
 }
-.fahrenheit-units {
+.units {
   color: #fbfeff;
   font-family: "Nunito", sans-serif;
   font-size: 15px;
@@ -44,6 +44,7 @@ li:first-letter {
 .sky-condition {
   font-size: 22px;
   font-weight: 700;
+  text-transform: capitalize;
 }
 .wet-weather img {
   float: left;
