@@ -174,9 +174,27 @@ function displayApiResults(response) {
   // a delay of 10 minutes. This is probably due to the frequency of updating dt in the API
 }
 
-let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
-let cityName = "Sydney";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
-console.log(apiUrl);
+function search(cityName) {
+  let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayApiResults);
+}
 
-axios.get(apiUrl).then(displayApiResults);
+function handleInput(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-imput");
+  search(cityInputElement.value);
+}
+// function showPosition(position) {
+//   let h2 = document.querySelector("#city-imput");
+//   h2.innerHTML = `Your latitude is ${position.coords.latitude} and longitude is ${position.coords.longitude}`;
+// }
+
+// function getCurrentPosition() {
+//   navigator.geolocation.getCurrentPosition(showPosition);
+// }
+
+search("London");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleInput);

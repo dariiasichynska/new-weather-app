@@ -26,11 +26,17 @@
     <div class="container">
       <div class="wrapper">
         <div class="weather-app" id="weather-app">
-          <h1 id="city"></h1>
-
+          <form id="search-form" class="search-form">
+            <input id="city-imput" type="search" placeholder="🔍" class="search-form" autocomplete="on"
+                autofocus="on">
+            <input id="search-button" type="submit"  value="Search" class="search-form">
+          </form>
+          
           <div class="row">
             <div class="col-4">
-              <div class="temperature">
+              <ul>
+                <li class="cityName"><h1 id="city"></h1></li>
+                <li class="tempResult"><div class="temperature">
                 <img
                   src="wi_thermometer-glass.png"
                   alt="Termometr"
@@ -40,7 +46,9 @@
               </div>
               <span class="units"
                 ><a href="#" class="units">°C</a> |<a href="#" class="units">°F</a>
-              </span>
+              </span></li>
+              </ul>
+              
             </div>
             <div class="col-4" >
               <img class="opNLj" src="#" alt="one moment please" loading="lazy" id="icon"></img>
