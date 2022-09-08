@@ -80,6 +80,7 @@ dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
 // Changing backgroundImage depending from time oh the day
 // let now = new Date();
 // let hour = now.getHours();
+
 switch (true) {
   case 10 <= hour && hour < 18:
     document.getElementById("weather-app").style.backgroundImage =
@@ -187,14 +188,6 @@ function handleInput(event) {
   let cityInputElement = document.querySelector("#city-imput");
   search(cityInputElement.value);
 }
-// function showPosition(position) {
-//   let h2 = document.querySelector("#city-imput");
-//   h2.innerHTML = `Your latitude is ${position.coords.latitude} and longitude is ${position.coords.longitude}`;
-// }
-
-// function getCurrentPosition() {
-//   navigator.geolocation.getCurrentPosition(showPosition);
-// }
 
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
@@ -222,4 +215,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-search("London");
+search("Kyiv");
