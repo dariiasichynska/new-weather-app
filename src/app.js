@@ -147,7 +147,8 @@ function displayApiResults(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let conditionElement = document.querySelector("#condition");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   conditionElement.innerHTML = response.data.weather[0].description;
 
@@ -195,15 +196,26 @@ function handleInput(event) {
 //   navigator.geolocation.getCurrentPosition(showPosition);
 // }
 
-search("London");
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleInput);
-
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheitTemperature = Math.round((22 * 9) / 5 + 32);
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = fahrenheitTemperature;
 }
-let unitConverter = document.querySelector("#fahrenheit-link");
-unitConverter.addEventListener("click", displayFahrenheitTemperature);
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleInput);
+
+let fahrenheitConverter = document.querySelector("#fahrenheit-link");
+fahrenheitConverter.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusConverter = document.querySelector("#celsius-link");
+celsiusConverter.addEventListener("click", displayCelsiusTemperature);
+search("London");
