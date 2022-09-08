@@ -198,3 +198,12 @@ function handleInput(event) {
 search("London");
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleInput);
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = Math.round((22 * 9) / 5 + 32);
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+let unitConverter = document.querySelector("#fahrenheit-link");
+unitConverter.addEventListener("click", displayFahrenheitTemperature);
