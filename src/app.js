@@ -45,6 +45,7 @@ dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
 //   if (hours < 10) {
 //     hours = `0${hours}`;
 //   }
+
 //   let minutes = date.getMinutes();
 //   console.log(minutes);
 //   if (minutes < 10) {
@@ -159,16 +160,19 @@ function displayApiResults(response) {
   let windElement = document.querySelector("#wind-power");
   let windSpeed = Math.round(response.data.wind.speed);
   windElement.innerHTML = windSpeed;
+  console.log(`Current wind speed: ${windSpeed} km/h`);
+  let windDirectionElement = document.querySelector("#wind-direction");
   if (windSpeed > 0) {
-    let windDirectionElement = document.querySelector("#wind-direction");
     windDirectionElement.innerHTML = formatWind(response.data.wind.deg);
+  } else {
+    windDirectionElement.innerHTML = null;
   }
   // не отображает направление ветра, если скорость ветра = 0.
 
   let iconID = response.data.weather[0].icon;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
-
+  displayCelsiusTemperature();
   // let dateElement = document.querySelector("#dateTime");
   // dateElement.innerHTML = formatDate(response.data.dt * 1000);
   // - I don't like this way because
@@ -188,31 +192,47 @@ function handleInput(event) {
   let cityInputElement = document.querySelector("#city-imput");
   search(cityInputElement.value);
 }
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
+function displayFahrenheitTemperature() {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   temperatureElement.innerHTML = fahrenheitTemperature;
 }
-
-function displayCelsiusTemperature(event) {
+function displayFahrenheitTemperatureHandler(event) {
   event.preventDefault();
+  displayFahrenheitTemperature();
+}
+function displayCelsiusTemperature() {
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
+function displayCelsiusTemperatureHandler(event) {
+  event.preventDefault();
+  displayCelsiusTemperature();
+}
+
+function showActualWeather() {
+  navigator.geolocation.getCurrentPosition(getWeatherForLocation);
+}
+function getWeatherForLocation(position) {
+  console.log(position);
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
+  let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
+  apiCoordUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiCoordUrl).then(displayApiResults);
+}
+
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleInput);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperatureHandler);
 
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-search("Kyiv");
+celsiusLink.addEventListener("click", displayCelsiusTemperatureHandler);
