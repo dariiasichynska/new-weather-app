@@ -190,7 +190,7 @@ function search(cityName) {
 function handleInput(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-imput");
-  search(cityInputElement.value);
+  search(cityInputElement.value.trim());
 }
 function displayFahrenheitTemperature() {
   celsiusLink.classList.remove("active");
