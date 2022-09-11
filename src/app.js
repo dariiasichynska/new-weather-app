@@ -158,7 +158,7 @@ function displayApiResults(response) {
   humidityElement.innerHTML = response.data.main.humidity;
 
   let windElement = document.querySelector("#wind-power");
-  let windSpeed = Math.round(response.data.wind.speed);
+  windSpeed = Math.round(response.data.wind.speed);
   windElement.innerHTML = windSpeed;
   console.log(`Current wind speed: ${windSpeed} km/h`);
   let windDirectionElement = document.querySelector("#wind-direction");
@@ -226,7 +226,27 @@ function getWeatherForLocation(position) {
   axios.get(apiCoordUrl).then(displayApiResults);
 }
 
+function displayImperialSpeed(event) {
+  event.preventDefault();
+  imperialUnit.style.visibility = "hidden";
+  metricUnit.style.visibility = "visible";
+  let windSpeedInMph = Math.round(windSpeed / 1.609);
+  console.log(`Current wind speed: ${windSpeedInMph} mph`);
+  let imperialSpeed = document.querySelector("#wind-power");
+  imperialSpeed.innerHTML = windSpeedInMph;
+}
+
+function displayMetricSpeed(event) {
+  event.preventDefault();
+  metricUnit.style.visibility = "hidden";
+  imperialUnit.style.visibility = "visible";
+  let windSpeedInKmh = windSpeed;
+  let metricSpeed = document.querySelector("#wind-power");
+  metricSpeed.innerHTML = windSpeedInKmh;
+}
+
 let celsiusTemperature = null;
+let windSpeed = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleInput);
@@ -236,3 +256,9 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperatureHandler);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperatureHandler);
+
+let metricUnit = document.querySelector("#metric-units-speed");
+metricUnit.addEventListener("click", displayImperialSpeed);
+
+let imperialUnit = document.querySelector("#imperial-units-speed");
+imperialUnit.addEventListener("click", displayMetricSpeed);
