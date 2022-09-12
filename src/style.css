@@ -94,6 +94,17 @@ li:first-letter {
 .wind-speed var {
   font-style: normal;
 }
+#metric-units-speed:hover {
+  text-decoration: none;
+  color: #d22837;
+}
+#imperial-units-speed {
+  margin-left: -33px;
+}
+#imperial-units-speed:hover {
+  text-decoration: none;
+  color: #d22837;
+}
 .dateTime {
   border: 1px solid #d22837;
   border-radius: 10px;
