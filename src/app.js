@@ -104,37 +104,37 @@ console.log(hour);
 
 function formatWind(direction) {
   switch (true) {
-    case 0 <= direction && direction < 11:
+    case 0 <= direction && direction <= 11:
       return `north`;
-    case 12 < direction && direction < 34:
+    case 12 < direction && direction <= 34:
       return `north-northeast`;
-    case 34 < direction && direction < 56:
+    case 34 < direction && direction <= 56:
       return `northeast`;
-    case 57 < direction && direction < 79:
+    case 57 < direction && direction <= 79:
       return `east-northeast`;
-    case 80 < direction && direction < 101:
+    case 80 < direction && direction <= 101:
       return `east`;
-    case 102 < direction && direction < 123:
+    case 102 < direction && direction <= 123:
       return `east-southeast`;
-    case 124 < direction && direction < 146:
+    case 124 < direction && direction <= 146:
       return `southeast`;
-    case 147 < direction && direction < 168:
+    case 147 < direction && direction <= 168:
       return `south-southeast`;
-    case 169 < direction && direction < 191:
+    case 169 < direction && direction <= 191:
       return `south`;
-    case 192 < direction && direction < 213:
+    case 192 < direction && direction <= 213:
       return `south-southwest`;
-    case 214 < direction && direction < 236:
+    case 214 < direction && direction <= 236:
       return `southwest`;
-    case 237 < direction && direction < 258:
+    case 237 < direction && direction <= 258:
       return `west-southwest`;
-    case 259 < direction && direction < 281:
+    case 259 < direction && direction <= 281:
       return `west`;
-    case 282 < direction && direction < 303:
+    case 282 < direction && direction <= 303:
       return `west-northwest`;
-    case 304 < direction && direction < 326:
+    case 304 < direction && direction <= 326:
       return `northwest`;
-    case 327 < direction && direction < 348:
+    case 327 < direction && direction <= 348:
       return `north-northwest`;
     case 349 < direction && direction <= 360:
       return `north`;
@@ -189,6 +189,9 @@ function search(cityName) {
 
 function handleInput(event) {
   event.preventDefault();
+  // let milesSpeedHandler = windSpeed;
+  // let metricSpeed = document.querySelector("#wind-power");
+  // metricSpeed.innerHTML = milesSpeedHandler;
   let cityInputElement = document.querySelector("#city-imput");
   search(cityInputElement.value.trim());
 }

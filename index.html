@@ -27,31 +27,50 @@
       <div class="wrapper">
         <div class="weather-app" id="weather-app">
           <form id="search-form" class="search-form">
-            <input id="city-imput" type="search" placeholder="🔍" class="search-form" autocomplete="on"
-                autofocus="on">
-            <input id="search-button" type="submit"  value="Search" class="search-form">
+            <input
+              id="city-imput"
+              type="search"
+              placeholder="🔍"
+              class="search-form"
+              autocomplete="on"
+              autofocus="on"
+            />
+            <input
+              id="search-button"
+              type="submit"
+              value="Search"
+              class="search-form"
+            />
           </form>
-          
+
           <div class="row">
             <div class="col-4">
               <ul>
                 <li class="cityName"><h1 id="city"></h1></li>
-                <li class="tempResult"><div class="temperature">
-                <img
-                  src="wi_thermometer-glass.png"
-                  alt="Termometr"
-                  class="termometr"
-                />
-                <var class="degree" id="temperature"></var>
-              </div>
-              <span class="units"
-                ><a href="#" class=" units active" id="celsius-link">°C</a> |<a href="#" class="units" id="fahrenheit-link">°F</a>
-              </span></li>
+                <li class="tempResult">
+                  <div class="temperature">
+                    <img
+                      src="wi_thermometer-glass.png"
+                      alt="Termometr"
+                      class="termometr"
+                    />
+                    <var class="degree" id="temperature"></var>
+                  </div>
+                  <span class="units"
+                    ><a href="#" class="units active" id="celsius-link">°C</a>
+                    |<a href="#" class="units" id="fahrenheit-link">°F</a>
+                  </span>
+                </li>
               </ul>
-              
             </div>
-            <div class="col-4" >
-              <img class="opNLj" src="#" alt="one moment please" loading="lazy" id="icon"></img>
+            <div class="col-4">
+              <img
+                class="opNLj"
+                src="#"
+                alt="one moment please"
+                loading="lazy"
+                id="icon"
+              />
             </div>
             <div class="col-4">
               <ul>
@@ -67,8 +86,15 @@
                 <li class="wind-power">
                   <div class="d-flex wind-speed">
                     <img src="wi_wind.png" alt="Speed" />
-                    <var id="wind-power"></var>&nbsp <a href="#" class="units" id="metric-units-speed">km/h</a>
-                    <a href="#" class="units" id="imperial-units-speed" style="visibility: hidden;">mp/h</a> 
+                    <var id="wind-power"></var>&nbsp
+                    <a href="#" class="units" id="metric-units-speed">km/h</a>
+                    <a
+                      href="#"
+                      class="units"
+                      id="imperial-units-speed"
+                      style="visibility: hidden"
+                      >mph</a
+                    >
                   </div>
                 </li>
                 <li class="wind-direction" id="wind-direction"></li>
@@ -78,28 +104,29 @@
           <button class="dateTime"><span id="dateTime"></span></button>
           <div class="weather-forecast">
             <div class="row">
-              <div class="col today-day">today
-                🌻 
-                19 9
+              <div class="col">
+                <div class="forecast-date">today</div>
+                <img
+                  class="opNLj"
+                  src="#"
+                  alt="💮 "
+                  loading="lazy"
+                  id="forecast-icon"
+                />
+                <div class="forecast-temperature">
+                  <span class="forecast-temp-max">20</span>
+                  <span class="forecast-temp-min">15</span>
+                </div>
               </div>
-              <div class="col tomorrow-day">tomorrow 
-                🍀  
-                22 14</div>
-              <div class="col third-day">third
-                💮 
-              24 20 </div>
-              <div class="col fourth-day">fourth
-                🍑 
-                20 15
-              </div>
-              <div class="col fifth-day">fifth 🍀  
-                22 14</div>
-              <div class="col sixth-day">sixth  🍑 
-                20 15</div>
+              <div class="col tomorrow-day">tomorrow 🍀 22 14</div>
+              <div class="col third-day">third 💮 24 20</div>
+              <div class="col fourth-day">fourth 🍑 20 15</div>
+              <div class="col fifth-day">fifth 🍀 22 14</div>
+              <div class="col sixth-day">sixth 🍑 20 15</div>
             </div>
           </div>
         </div>
-<!-- maybe 3 rows? -->
+        <!-- maybe 3 rows? -->
         <p class="footer" id="footer">
           This project was coded by
           <a href="https://www.linkedin.com/in/dariia-sichynska"
@@ -109,7 +136,9 @@
           <a href="https://github.com/dariiasichynska/new-weather-app"
             >an open-source code on GitHub</a
           >
-          that hosted on <a href="https://app.netlify.com">Netlyfi</a>. Icons are available under a MIT-license by <a href="https://bas.dev/work/meteocons">Bas Milius</a>
+          that hosted on <a href="https://app.netlify.com">Netlyfi</a>. Icons
+          are available under a MIT-license by
+          <a href="https://bas.dev/work/meteocons">Bas Milius</a>
         </p>
       </div>
     </div>
