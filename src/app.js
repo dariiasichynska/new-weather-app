@@ -104,7 +104,7 @@ console.log(hour);
 
 function formatWind(direction) {
   switch (true) {
-    case 0 < direction && direction < 11:
+    case 0 <= direction && direction < 11:
       return `north`;
     case 12 < direction && direction < 34:
       return `north-northeast`;
@@ -136,7 +136,7 @@ function formatWind(direction) {
       return `northwest`;
     case 327 < direction && direction < 348:
       return `north-northwest`;
-    case 349 < direction && direction < 360:
+    case 349 < direction && direction <= 360:
       return `north`;
     default:
       `direction is not defined`;
@@ -228,8 +228,8 @@ function getWeatherForLocation(position) {
 
 function displayImperialSpeed(event) {
   event.preventDefault();
-  imperialUnit.style.visibility = "hidden";
-  metricUnit.style.visibility = "visible";
+  document.getElementById("imperial-units-speed").style.visibility = "visible";
+  document.getElementById("metric-units-speed").style.visibility = "hidden";
   let windSpeedInMph = Math.round(windSpeed / 1.609);
   console.log(`Current wind speed: ${windSpeedInMph} mph`);
   let imperialSpeed = document.querySelector("#wind-power");
@@ -238,8 +238,8 @@ function displayImperialSpeed(event) {
 
 function displayMetricSpeed(event) {
   event.preventDefault();
-  metricUnit.style.visibility = "hidden";
-  imperialUnit.style.visibility = "visible";
+  document.getElementById("metric-units-speed").style.visibility = "visible";
+  document.getElementById("imperial-units-speed").style.visibility = "hidden";
   let windSpeedInKmh = windSpeed;
   let metricSpeed = document.querySelector("#wind-power");
   metricSpeed.innerHTML = windSpeedInKmh;
