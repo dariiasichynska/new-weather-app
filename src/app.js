@@ -265,3 +265,55 @@ metricUnit.addEventListener("click", displayImperialSpeed);
 
 let imperialUnit = document.querySelector("#imperial-units-speed");
 imperialUnit.addEventListener("click", displayMetricSpeed);
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(span);
+  function span(day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col">
+                <div class="forecast-date">${day}</div>
+                <img
+                  class="opNLj"
+                  src="#"
+                  alt="💮 "
+                  loading="lazy"
+                  id="forecast-icon"
+                />
+                <div class="forecast-temperature">
+                  <span class="forecast-temp-max">20</span>
+                  <span class="forecast-temp-min">15</span>
+                </div>
+              </div>
+
+            `;
+  }
+  // for (let i = 0; i <= 5; i = i + 1) {
+  //   forecastHTML =
+  //     forecastHTML +
+  //     `
+  //             <div class="col">
+  //               <div class="forecast-date">${days[i]}</div>
+  //               <img
+  //                 class="opNLj"
+  //                 src="#"
+  //                 alt="💮 "
+  //                 loading="lazy"
+  //                 id="forecast-icon"
+  //               />
+  //               <div class="forecast-temperature">
+  //                 <span class="forecast-temp-max">20</span>
+  //                 <span class="forecast-temp-min">15</span>
+  //               </div>
+  //             </div>
+
+  //           `;
+  // }
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+displayForecast();
