@@ -100,7 +100,12 @@ switch (true) {
       "url(night.jpg)";
     break;
 }
-console.log(hour);
+function getForecast(coords) {
+  console.log(coords);
+  let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+}
 
 function formatWind(direction) {
   switch (true) {
@@ -145,7 +150,6 @@ function formatWind(direction) {
 }
 
 function displayApiResults(response) {
-  console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let conditionElement = document.querySelector("#condition");
@@ -173,6 +177,7 @@ function displayApiResults(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
   displayCelsiusTemperature();
+  getForecast(response.data.coord);
   // let dateElement = document.querySelector("#dateTime");
   // dateElement.innerHTML = formatDate(response.data.dt * 1000);
   // - I don't like this way because
@@ -183,7 +188,6 @@ function displayApiResults(response) {
 function search(cityName) {
   let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayApiResults);
 }
 
@@ -221,7 +225,6 @@ function showActualWeather() {
   navigator.geolocation.getCurrentPosition(getWeatherForLocation);
 }
 function getWeatherForLocation(position) {
-  console.log(position);
   lat = position.coords.latitude;
   lon = position.coords.longitude;
   let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
