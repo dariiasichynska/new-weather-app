@@ -105,6 +105,7 @@ function getForecast(coords) {
   let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=minutely,hourly,alerts&appid=${apiKey}&units=metric`;
   console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function formatWind(direction) {
@@ -269,7 +270,8 @@ metricUnit.addEventListener("click", displayImperialSpeed);
 let imperialUnit = document.querySelector("#imperial-units-speed");
 imperialUnit.addEventListener("click", displayMetricSpeed);
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -319,4 +321,3 @@ function displayForecast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-displayForecast();
