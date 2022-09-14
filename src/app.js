@@ -291,7 +291,7 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  forecast.slice(0, 6).forEach(function (forecastDay) {
+  forecast.slice(0, 4).forEach(function (forecastDay) {
     let maxTemp = Math.round(forecastDay.temp.max);
     let minTemp = Math.round(forecastDay.temp.min);
     let iconID = forecastDay.weather[0].icon;
