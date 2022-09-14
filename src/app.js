@@ -272,22 +272,39 @@ metricUnit.addEventListener("click", displayImperialSpeed);
 let imperialUnit = document.querySelector("#imperial-units-speed");
 imperialUnit.addEventListener("click", displayMetricSpeed);
 
+function getForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let weekDay = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = weekDay[date.getDay()];
+  return day;
+}
+
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay) {
+  forecast.slice(0, 5).forEach(function (forecastDay) {
     let maxTemp = Math.round(forecastDay.temp.max);
     let minTemp = Math.round(forecastDay.temp.min);
     let iconID = forecastDay.weather[0].icon;
     // let iconElement = document.querySelector("#forecastIcon");
     // console.log(iconID);
     // iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
-    forecastHTML =
-      forecastHTML +
-      `
+
+    // 🔻 "forecastHTML += "  is the same as "forecastHTML = forecastHTML + "
+    forecastHTML += `
               <div class="col">
-                <div class="forecast-date">${forecastDay.dt}</div>
+                <div class="forecast-date">${getForecastDay(
+                  forecastDay.dt
+                )}</div>
                 <img
                   class="opNLj"
                   src="openweathermap/${iconID}.svg"
