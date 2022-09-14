@@ -165,6 +165,8 @@ function displayApiResults(response) {
   let windElement = document.querySelector("#wind-power");
   windSpeed = Math.round(response.data.wind.speed);
   windElement.innerHTML = windSpeed;
+  document.getElementById("metric-units-speed").style.visibility = "visible";
+  document.getElementById("imperial-units-speed").style.visibility = "hidden";
   console.log(`Current wind speed: ${windSpeed} km/h`);
   let windDirectionElement = document.querySelector("#wind-direction");
   if (windSpeed > 0) {
@@ -274,14 +276,13 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(extend);
-
-  function extend(forecastDay) {
+  forecast.forEach(function (forecastDay) {
     let maxTemp = Math.round(forecastDay.temp.max);
     let minTemp = Math.round(forecastDay.temp.min);
-    let iconID = response.data.weather[0].icon;
-    let iconElement = document.querySelector("#forecastIcon");
-    iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
+    let iconID = forecastDay.weather[0].icon;
+    // let iconElement = document.querySelector("#forecastIcon");
+    // console.log(iconID);
+    // iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
     forecastHTML =
       forecastHTML +
       `
@@ -289,7 +290,7 @@ function displayForecast(response) {
                 <div class="forecast-date">${forecastDay.dt}</div>
                 <img
                   class="opNLj"
-                  src="#"
+                  src="openweathermap/${iconID}.svg"
                   alt="🤟"
                   loading="lazy"
                   id="forecastIcon"
@@ -301,7 +302,7 @@ function displayForecast(response) {
               </div>
 
             `;
-  }
+  });
   // for (let i = 0; i <= 5; i = i + 1) {
   //   forecastHTML =
   //     forecastHTML +

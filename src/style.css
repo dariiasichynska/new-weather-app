@@ -75,6 +75,7 @@ li:first-letter {
 .wet-weather img {
   float: left;
   width: 30px;
+  opacity: 70%;
 }
 .wet-weather var {
   line-height: 22.5px;
