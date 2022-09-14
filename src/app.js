@@ -301,7 +301,7 @@ function displayForecast(response) {
 
     // 🔻 "forecastHTML += "  is the same as "forecastHTML = forecastHTML + "
     forecastHTML += `
-              <div class="col">
+              <div class="col-3">
                 <div class="forecast-date">${getForecastDay(
                   forecastDay.dt
                 )}</div>
