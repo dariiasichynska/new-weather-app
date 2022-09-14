@@ -313,8 +313,8 @@ function displayForecast(response) {
                   id="forecastIcon"
                 />
                 <div class="forecast-temperature">
-                  <span class="forecast-temp-max">${maxTemp}</span>
-                  <span class="forecast-temp-min">${minTemp}</span>
+                  <span class="forecast-temp-max" id="forecast-temp-max">${maxTemp}°</span>
+                  <span class="forecast-temp-min" id="forecast-temp-min">${minTemp}°</span>
                 </div>
               </div>
 
