@@ -279,6 +279,9 @@ function displayForecast(response) {
   function extend(forecastDay) {
     let maxTemp = Math.round(forecastDay.temp.max);
     let minTemp = Math.round(forecastDay.temp.min);
+    let iconID = response.data.weather[0].icon;
+    let iconElement = document.querySelector("#forecastIcon");
+    iconElement.setAttribute("src", `openweathermap/${iconID}.svg`);
     forecastHTML =
       forecastHTML +
       `
@@ -287,9 +290,9 @@ function displayForecast(response) {
                 <img
                   class="opNLj"
                   src="#"
-                  alt="💮 "
+                  alt="🤟"
                   loading="lazy"
-                  id="forecast-icon"
+                  id="forecastIcon"
                 />
                 <div class="forecast-temperature">
                   <span class="forecast-temp-max">${maxTemp}</span>
