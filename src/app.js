@@ -271,17 +271,19 @@ let imperialUnit = document.querySelector("#imperial-units-speed");
 imperialUnit.addEventListener("click", displayMetricSpeed);
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  days.forEach(span);
-  function span(day) {
+  forecast.forEach(extend);
+
+  function extend(forecastDay) {
+    let maxTemp = Math.round(forecastDay.temp.max);
+    let minTemp = Math.round(forecastDay.temp.min);
     forecastHTML =
       forecastHTML +
       `
               <div class="col">
-                <div class="forecast-date">${day}</div>
+                <div class="forecast-date">${forecastDay.dt}</div>
                 <img
                   class="opNLj"
                   src="#"
@@ -290,8 +292,8 @@ function displayForecast(response) {
                   id="forecast-icon"
                 />
                 <div class="forecast-temperature">
-                  <span class="forecast-temp-max">20</span>
-                  <span class="forecast-temp-min">15</span>
+                  <span class="forecast-temp-max">${maxTemp}</span>
+                  <span class="forecast-temp-min">${minTemp}</span>
                 </div>
               </div>
 
