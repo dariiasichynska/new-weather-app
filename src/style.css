@@ -128,5 +128,6 @@ li:first-letter {
   font-size: 10px;
 }
 .weather-forecast {
-  background-color: #d22837;
+  text-align: center;
+  font-weight: 600;
 }
