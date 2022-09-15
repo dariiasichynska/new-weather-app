@@ -208,6 +208,15 @@ function displayFahrenheitTemperature() {
   let temperatureElement = document.querySelector("#temperature");
   let fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
   temperatureElement.innerHTML = fahrenheitTemperature;
+  // for (let index = 0; index <= 7; index++) {
+  //   let forecastFahrenheitTempMax = document.getElementById(
+  //     `#forecast-temp-max-${index}`
+  //   );
+  //   let forecastFahrenheitTempMin = document.getElementById(
+  //     `#forecast-temp-min-${index}`
+  //   );
+  //   console.log(`${forecastFahrenheitTempMax}`, `${forecastFahrenheitTempMin}`);
+  // }
 }
 function displayFahrenheitTemperatureHandler(event) {
   event.preventDefault();
@@ -291,7 +300,7 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  forecast.slice(0, 4).forEach(function (forecastDay) {
+  forecast.slice(0, 4).forEach(function (forecastDay, index) {
     let maxTemp = Math.round(forecastDay.temp.max);
     let minTemp = Math.round(forecastDay.temp.min);
     let iconID = forecastDay.weather[0].icon;
@@ -313,8 +322,8 @@ function displayForecast(response) {
                   id="forecastIcon"
                 />
                 <div class="forecast-temperature">
-                  <span class="forecast-temp-max" id="forecast-temp-max">${maxTemp}°</span>
-                  <span class="forecast-temp-min" id="forecast-temp-min">${minTemp}°</span>
+                  <span class="forecast-temp-max" id="forecast-temp-max-${index}">${maxTemp}°</span>
+                  <span class="forecast-temp-min" id="forecast-temp-min-${index}">${minTemp}°</span>
                 </div>
               </div>
 
