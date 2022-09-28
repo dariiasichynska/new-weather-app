@@ -31,8 +31,9 @@ body {
   border: 1px solid #0566b2;
   background-color: #e2e6ea;
   color: #0566b2;
-  width: 60px;
-  height: 27px;
+  width: 80px;
+  height: 30px;
+  text-align: center;
 }
 #search-button:hover {
   text-decoration: none;
