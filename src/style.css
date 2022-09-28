@@ -35,6 +35,12 @@ body {
   height: 30px;
   text-align: center;
 }
+#city-imput :hover {
+  border-radius: 3px;
+  border: 1px solid #fbfeff;
+  background-color: #fbfeff;
+  color: #0566b2;
+}
 #search-button:hover {
   text-decoration: none;
   background-color: #d0d0d7;
