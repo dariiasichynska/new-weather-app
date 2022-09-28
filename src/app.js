@@ -311,9 +311,6 @@ function displayForecast(response) {
     // 🔻 "forecastHTML += "  is the same as "forecastHTML = forecastHTML + "
     forecastHTML += `
               <div class="col-3">
-                <div class="forecast-date">${getForecastDay(
-                  forecastDay.dt
-                )}</div>
                 <img
                   class="opNLj"
                   src="openweathermap/${iconID}.svg"
@@ -325,6 +322,10 @@ function displayForecast(response) {
                   <span class="forecast-temp-max" id="forecast-temp-max-${index}">${maxTemp}°</span>
                   <span class="forecast-temp-min" id="forecast-temp-min-${index}">${minTemp}°</span>
                 </div>
+                <div class="forecast-date">${getForecastDay(
+                  forecastDay.dt
+                )}</div>
+                
               </div>
 
             `;
