@@ -20,6 +20,24 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 15px;
 }
+#city-imput {
+  border-radius: 3px;
+  border: 1px solid #fbfeff;
+  background-color: #fbfeff;
+  color: #0566b2;
+}
+#search-button {
+  border-radius: 3px;
+  border: 1px solid #0566b2;
+  background-color: #e2e6ea;
+  color: #0566b2;
+  width: 60px;
+  height: 27px;
+}
+#search-button:hover {
+  text-decoration: none;
+  background-color: #d0d0d7;
+}
 .row {
   margin-top: 30px;
 }

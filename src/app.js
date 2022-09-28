@@ -174,7 +174,7 @@ function displayApiResults(response) {
   } else {
     windDirectionElement.innerHTML = null;
   }
-  // не отображает направление ветра, если скорость ветра = 0.
+  // wind direcrion is not available if wind speed = 0.
 
   let iconID = response.data.weather[0].icon;
   let iconElement = document.querySelector("#icon");
