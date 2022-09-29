@@ -148,6 +148,10 @@ li:first-letter {
   padding: 2px;
   margin: 0 auto;
   display: block;
+  cursor: default;
+}
+#dateTimeButton {
+  cursor: default;
 }
 
 .footer {
