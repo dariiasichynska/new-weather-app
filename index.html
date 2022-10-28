@@ -18,7 +18,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather-app</title>
+    <meta
+      name="description"
+      content="WeatherOnyx provides local & short-range weather forecasts, weather conditions for locations worldwide."
+    />
+    <title>
+      WeatherOnyx - stylish weather forecast site for your daily life
+    </title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -34,7 +40,7 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body onload="showActualWeather()">
     <div class="container">
@@ -64,7 +70,7 @@
                 <li class="tempResult">
                   <div class="temperature">
                     <img
-                      src="wi_thermometer-glass.png"
+                      src="/wi_thermometer-glass.png"
                       alt="Termometr"
                       class="termometr"
                     />
@@ -81,7 +87,7 @@
               <img
                 class="opNLj"
                 src="#"
-                alt="one moment please"
+                alt="One moment please"
                 loading="lazy"
                 id="icon"
               />
@@ -93,13 +99,13 @@
                 </li>
                 <li class="humidity">
                   <div class="d-flex wet-weather">
-                    <img src="wi_humidity.png" alt="Humidity" />
+                    <img src="/wi_humidity.png" alt="Humidity" />
                     <var id="humidity"></var>
                   </div>
                 </li>
                 <li class="wind-power">
                   <div class="d-flex wind-speed">
-                    <img src="wi_wind.png" alt="Speed" />
+                    <img src="/wi_wind.png" alt="Wind speed" />
                     <var id="wind-power"></var>&nbsp
                     <a href="#" class="units" id="metric-units-speed">km/h</a>
                     <a
