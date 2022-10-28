@@ -1,105 +1,66 @@
 // alert("Hello world");
 let now = new Date();
-let dateTime = document.querySelector("#dateTime");
-let date = now.getDate();
-let hour = now.getHours();
-hour = hour > 9 ? hour : "0" + hour;
-let minutes = now.getMinutes();
-minutes = minutes > 9 ? minutes : "0" + minutes;
 
-let weekDay = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let dayOfTheWeek = weekDay[now.getDay()];
+document.querySelector("#dateTime").innerHTML = formatTime(now);
+displayBackground(now.getHours());
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let month = months[now.getMonth()];
-dateTime.innerHTML = ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
+function formatTime(dateTime) {
+  let date = dateTime.getDate();
+  let hour = dateTime.getHours();
+  hour = hour > 9 ? hour : "0" + hour;
+  let minutes = dateTime.getMinutes();
+  minutes = minutes > 9 ? minutes : "0" + minutes;
 
-// function formatDate(timestamp) {
-//   let date = new Date(timestamp);
-//   console.log(date);
-//   let dayOfMonth = date.getDate();
-//   console.log(dayOfMonth);
-//   let hours = date.getHours();
-//   console.log(hours);
-//   if (hours < 10) {
-//     hours = `0${hours}`;
-//   }
+  let weekDay = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let dayOfTheWeek = weekDay[dateTime.getDay()];
 
-//   let minutes = date.getMinutes();
-//   console.log(minutes);
-//   if (minutes < 10) {
-//     minutes = `0${minutes}`;
-//   }
-//   let weekDay = [
-//     "Sunday",
-//     "Monday",
-//     "Tuesday",
-//     "Wednesday",
-//     "Thursday",
-//     "Friday",
-//     "Saturday",
-//   ];
-//   let day = weekDay[date.getDay()];
-//   let months = [
-//     "January",
-//     "February",
-//     "March",
-//     "April",
-//     "May",
-//     "June",
-//     "July",
-//     "August",
-//     "September",
-//     "October",
-//     "November",
-//     "December",
-//   ];
-//   let month = months[date.getMonth()];
-//   return `${day}, ${month} ${dayOfMonth}, ${hours}:${minutes}`;
-// }
-// Changing backgroundImage depending from time oh the day
-// let now = new Date();
-// let hour = now.getHours();
-
-switch (true) {
-  case 10 <= hour && hour < 18:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(day.jpg)";
-    break;
-  case 5 <= hour && hour < 10:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(sunrise.jpg)";
-    break;
-  case 18 <= hour && hour < 22:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(sunset.jpg)";
-    break;
-  case (0 <= hour && hour < 5) || 22 <= hour:
-    document.getElementById("weather-app").style.backgroundImage =
-      "url(night.jpg)";
-    break;
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let month = months[dateTime.getMonth()];
+  return ` ${dayOfTheWeek}, ${month} ${date}, ${hour}:${minutes} `;
 }
+
+function displayBackground(hour) {
+  switch (true) {
+    case 10 <= hour && hour < 18:
+      document.getElementById("weather-app").style.backgroundImage =
+        "url(day.jpg)";
+      break;
+    case 5 <= hour && hour < 10:
+      document.getElementById("weather-app").style.backgroundImage =
+        "url(sunrise.jpg)";
+      break;
+    case 18 <= hour && hour < 22:
+      document.getElementById("weather-app").style.backgroundImage =
+        "url(sunset.jpg)";
+      break;
+    case (0 <= hour && hour < 5) || 22 <= hour:
+      document.getElementById("weather-app").style.backgroundImage =
+        "url(night.jpg)";
+      break;
+  }
+}
+
 function getForecast(coords) {
   console.log(coords);
   let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
@@ -151,6 +112,26 @@ function formatWind(direction) {
 }
 
 function displayApiResults(response) {
+  let timeZone = response.data.timezone;
+  var date = new Date();
+
+  var now_utc = new Date(
+    Date.UTC(
+      date.getUTCFullYear(),
+      date.getUTCMonth(),
+      date.getUTCDate(),
+      date.getUTCHours(),
+      date.getUTCMinutes(),
+      date.getUTCSeconds()
+    )
+  );
+  console.log(now_utc.getTimezoneOffset());
+  let localDateTime = new Date(
+    now_utc.getTime() + timeZone * 1000 + now_utc.getTimezoneOffset() * 60000
+  );
+
+  console.log(localDateTime);
+  document.querySelector("#dateTime").innerHTML = formatTime(localDateTime);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let conditionElement = document.querySelector("#condition");
@@ -192,6 +173,7 @@ function search(cityName) {
   let apiKey = "ebfc1f6824f703866321e99d5ec95eb7";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayApiResults);
+  console.log(apiUrl);
 }
 
 function handleInput(event) {
